@@ -2,7 +2,7 @@
 #include <ctime>
 #include <random>
 
-using namspace std;
+using namespace std;
 
 //usege
 
