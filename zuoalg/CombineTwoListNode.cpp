@@ -9,7 +9,8 @@ struct ListNode
 
 ListNode* CombineTwoList(ListNode* h1,ListNode*h2)
 {
-    if(h1==NULL && h2==NULL)    return NULL;
+    //如果有其中一个是NULL,返回另一个，两个都是NULL,逻辑也成立，因为返回那个都是NULL
+    if(h1==NULL || h2==NULL)    return h1==NULL? h2: h1 ;
         
         //ListNode* head=(h1->val<=h2->val)? h1:h2;
         ListNode* head;
