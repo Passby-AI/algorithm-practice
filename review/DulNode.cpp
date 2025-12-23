@@ -49,7 +49,7 @@ class DoublyLinkList
             if(head==nullptr)
             {
                 head=newNode;
-                tail=newNode'
+                tail=newNode;
             }
             else
             {
@@ -57,6 +57,23 @@ class DoublyLinkList
                 head->prior=newNode;
                 head=newNode;//更新指针
             }
+
+        }
+        void Insert(int i,T val)
+        {
+            if(i<=0)    throw "Invalid Index";
+            DulNode<T>* newNode=new DulNode<T>(val);
+            DulNode<T>* current=head;
+            int j=1;
+            while(j!=i&&current!=nullptr)
+            {
+               current=current->next;
+               j++;
+            }
+            if(current==nullptr)    throw"Invalid Index";
+            newNode->next=current;
+            newNode->pre=current->pre;
+            current->pre=newNode;
 
         }
         //正向遍历打印
@@ -70,11 +87,19 @@ class DoublyLinkList
             }
             cout<<"NULL"<<"\n";
         }
-        void private
+        void printBackward()
+        {
+            DulNode<T>* temp=tail;
+            cout<<"NULL"<<" ";
+            while(temp!=nullptr)
+            {
+                cout<<temp->val<<" ";
+                temp=temp->prior;
+            }
+            cout<<"\n";
+        }
+        
     private:
         DulNode<T>* head;//头指针
         DulNode<T>* tail;//尾指针
-        
-
-
 };
