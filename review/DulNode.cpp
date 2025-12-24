@@ -76,6 +76,22 @@ class DoublyLinkList
             current->pre=newNode;
 
         }
+        //删除指定元素
+        void Delete(int i)
+        {
+            if(i<=0)    throw "Invalid Index";
+            DulNode<T>* current=head;
+            int j=1;
+            while(current!=nullptr&&j!=i)
+            {
+                current=current->next;
+                j++;
+            }
+            if(current==nullptr)    throw "Invalid Index";
+            current->next->prior=current->prior;
+            current->prior->next=current->next;
+            delete current;
+        }
         //正向遍历打印
         void printForward()
         {
@@ -87,6 +103,7 @@ class DoublyLinkList
             }
             cout<<"NULL"<<"\n";
         }
+        //反向打印，双链表的特权
         void printBackward()
         {
             DulNode<T>* temp=tail;
