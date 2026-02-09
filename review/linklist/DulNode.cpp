@@ -10,15 +10,15 @@ struct DulNode
 };
 
 template<class T>
-class DoublyLinkList
+class DoubleLinkList
 {
     public:
-        DoublyLinkList<T>()
+        DoubleLinkList<T>()
         {
             head=nullptr;
             tail=nullptr;
         }
-        ~DoublyLinkList<T>()
+        ~DoubleLinkList<T>()
         {
             DulNode<T>* current=head;
             while(current!=nullptr)
