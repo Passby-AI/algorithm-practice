@@ -1,10 +1,12 @@
+#include <algorithm>
 #include <unordered_map>
 #include <vector>
 class FreqStack {
 public:
     std::unordered_map<int, int> valueTimes;
     std::unordered_map<int, std::vector<int>> cntValues;
-    FreqStack() {
+    int topTimes;
+    FreqStack() :topTimes(0){
         
     }
     
@@ -12,19 +14,27 @@ public:
        if(!valueTimes.count(val))
        {
            valueTimes[val]=1;
-           if(cntValues.count(1))
                cntValues[1].push_back(val);
-           else
-               cntvalues.emplace(1,std::vector<int>{val});
        }
        else
        {
-           valueTimes.ad
+           int times=++valueTimes[val];
+            cntValues[times].push_back(val);
 
+       }
+       topTimes=std::max(topTimes,valueTimes[val]);
     }
     
     int pop() {
-        
+    int e=cntValues[topTimes].back();
+     cntValues[topTimes].pop_back();
+     valueTimes[e]--;
+     if(cntValues[topTimes].empty())
+         cntValues.erase(topTimes--);
+     if(valueTimes[e]==0)
+         valueTimes.erase(e);
+
+     return e;
     }
 };
 
